@@ -1,3 +1,4 @@
-#Algorithms
 
-## Algorithms to be uploaded
+#Algorithm
+
+##Algorithms to be uploaded
