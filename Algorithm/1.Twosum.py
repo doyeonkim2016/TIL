@@ -14,6 +14,12 @@ class Solution(object):
                 return [dic[n], i]
             dic[target-n] = i
             
-            
+#For this question, enumerate function is used
+#Create new dictionary (Hash table)
+#First get the index and the value from the nums list.
+#if the value is not in the dictionary,set the index value as dict value for target -n
+#if n is in dic, return it as a second index in the list.
+
+
             
         
