@@ -1,0 +1,8 @@
+Error: EPERM: operation not permitted, mkdir 'C:\Users\Kim'
+TypeError: Cannot read property 'get' of undefined
+
+--> This is due to the space bar problem with the npx
+
+In order to create react app in windows and if you have the space bar in your directory
+
+npm install -g  create-react-app will do instead.
