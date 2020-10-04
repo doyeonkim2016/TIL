@@ -12,27 +12,15 @@ select sum(population) from City where city.countrycode ="JPN"
 #Q4.Query the difference between the maximum and minimum populations in City.
 Select max(population)-min(population) from City;
 
-#Q5. https://www.hackerrank.com/challenges/occupations/problem (Pivot)
 
-Pivot Syntax
+         
+#Q5.https://www.hackerrank.com/challenges/the-blunder/problem
+         
+#Be aware of the Ceil function
+         #SQL CEIL() function is used to get the smallest integer which is greater tham or equal to, the specified numeric expression.
 
-SELECT <non-pivoted column>,  
-    [first pivoted column] AS <column name>,  
-    [second pivoted column] AS <column name>,  
-    ...  
-    [last pivoted column] AS <column name>  
-FROM  
-    (<SELECT query that produces the data>)   
-    AS <alias for the source query>  
-PIVOT  
-(  
-    <aggregation function>(<column being aggregated>)  
-FOR   
-[<column that contains the values that will become column headers>]   
-    IN ( [first pivoted column], [second pivoted column],  
-    ... [last pivoted column])  
-) AS <alias for the pivot table>  
-<optional ORDER BY clause>;
+Select CEIL(AVG(Salary)-AVG(Replace (Salary,'0',''))) FROM EMPLOYEES;
+        
 
 
 
