@@ -11,4 +11,5 @@ public class BasicEvaluation implements GradeEvaluation[
       grade ="A";
     }
     
+    return grade;
  }
