@@ -11,4 +11,6 @@ public class MajorEvaluation implements GradeEvaluation[
       grade ="A";
     }
     
+    return grade;
+    
  }
