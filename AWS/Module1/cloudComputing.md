@@ -46,7 +46,20 @@ Democratize advanced technologies
 Measure Efficiency , Eliminate unneeded expense
 
 
-### Best Practices for building solutions on AWS\
+### Best Practices for building solutions on AWS
+
+#### Design Tradeoffs 
+
+Select an optimal approach.Tradeoffs can increase the cost and complexity of your architecture.
+Thus, the design should be based on empirical data. Need to perform load testing to enusre that the measureable benefit 
+is obtained in performance.
+
+1. Enable scalability(1 of 2)
+
+Ensure that your architecture can handle changes in demand.
+
+
+
 
 
 
