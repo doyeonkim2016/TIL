@@ -52,6 +52,7 @@ public class VIPCustomer extends Customer{
     customerrade ="VIP";
   }
 }
+```
 
 ### protected 접근 제어자
 
