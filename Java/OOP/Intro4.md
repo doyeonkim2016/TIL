@@ -122,6 +122,21 @@ interface test{
 
 
 
+```java
+public class Customer implements Buy,Sell{
+
+  @Override
+  public void sell(){
+    System.out.println("Sell");
+  }
+  
+  @Override
+  public void buy(){
+    System.out.println("Buy");
+  }
+}
+```
+
 
 
 
