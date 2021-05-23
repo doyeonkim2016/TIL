@@ -4,6 +4,7 @@
 
 ## LIST-순차적으로 자료를 관리하는 List 인터페이스를 구현한 클래스와 그 활용
 
+
 ```java
 
 // Creating ArrayList
@@ -26,6 +27,7 @@ assertThat(Arrays.asList(1L,3L,2L),equalTo(list));
 //1.4 Iterate over the ArrayList
 //2 types: Iterator and ListIterator
 //Iterator gives you an opportunity to traverse the list in one direction, the latter allows you to traverse it in both directions
+//box each to an integer -> convert to the data type you want using collect function()
 
 List<Integer> list = new ArrayList<>(
   IntStream.range(0,10).boxed().collect(toColection(ArrayList::new)));
