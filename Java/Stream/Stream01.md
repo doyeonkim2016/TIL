@@ -53,3 +53,16 @@ sList.stream().filter(s->s.length() > = 5).forEach(s->Systm.out.println(s));
 
 customerList.stream().map(c->c.getName()).forEach(s->System.out.prinln(s));
 ```
+
+
+### Stream.iterate()
+```java
+Stream<Integer> streamIterated= Stream.iterate(40,n->n+2).limit(2);
+```
+### Referencing a Stream
+```java
+We can instantiate a stream. Have accessible reference.
+
+```java
+Stream<String> stream = Stream.of("a",b"","c").filter(element ->element.contains("b));
+```
