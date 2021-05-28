@@ -65,4 +65,24 @@ We can instantiate a stream. Have accessible reference.
 
 ```java
 Stream<String> stream = Stream.of("a",b"","c").filter(element ->element.contains("b));
+
+```
+
+### Reduce()
+
+- 정의된 연산이 아닌 프로그래머가 직접 구현한 연산 적용
+
+```java
+public class Reducetest{
+    public static void main(String[] args){
+    
+        String greetings[] = {"Hellooooo","gOod morning","LOL"};
+        Arrays.stream(greetings).reduce("",(s1,s2)-> 
+                //Lambda
+                (s1.getBytes().length() >= s2.getByetes().length()) return s1;
+                else return s2;}
+                )
+
+}
+
 ```
