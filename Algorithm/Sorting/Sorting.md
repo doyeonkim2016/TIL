@@ -93,7 +93,22 @@ public void givenMap_SortByKeys(){
   
 }
 
-``` 
+```
+#Python
+```py
+#N을 입력받기
+n=int(input())
+
+array=[]
+for i in range(n):
+  input_data= input().split()
+  array.append((input_data[0],int(input_data[1])))
+
+array= sorted(array,key=lambda student:stuent[1])
+
+for student in array:
+  print(student[0])
+```
 # Entry 
 1. Map 인터페이스의 내부 인터페이스입니다.
 2. Map 에 저장되는 Key-value쌍을 다루기 위해 내부적으로 Entry 인터페이스를 정의해 놓았습니다.
