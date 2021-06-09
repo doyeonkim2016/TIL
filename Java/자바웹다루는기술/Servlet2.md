@@ -86,4 +86,43 @@ public class InputServlet extends HttpServlet{
 ```
 
 
+## 서블릿의 응답 처리 방법
+
+1. doGet() 이나 doPost() 메서드 안에서 처리
+2.  javax.servlet.http.HttpServletResponse 객체를 이용.
+3.  setContentType()을 통해 클라이언트에게 전송할 데이터 종류 (MIME TYPE)을 지정합니다.
+4.  클라이언트와 서블릿의 통신은 자바 I/O의 스트림을 이용.
+
+## HttpServletResponse를 이용한 서블릿 응답
+- 서블릿이 클라이언트에 응답하는 과정
+1. setContentType()을 이용해 MIME-TYPE을 지정
+2. 데이터를  출력할 PrintWriter객체를 생성
+3. 출력 데이터를 HTML형식으로 만듭니다
+4. PrintWriter의 Print() 나 Println()을 이용해 데이터를 출력
+
+```java
+package sec02.ex01;
+
+@WebServlet("/login2")
+public class LoginServlet2 extends HttpServlet{
+  public void init() throws ServletException{
+    System.out.println("init method");
+  }
+  
+  protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException,IOException{
+    request.setCharacterEncoding("utf-8");
+    resonse.setContentType("text/html;charset=utf-8");
+    PrintWriter out = response.getWriter();
+    String id = request.getParameter("user_id");
+    String pw = request.getParameter("user_pw");
+    
+    
+    String data= "<html>";
+    data+= "<body>";
+    data+= id;
+    
+    out.print(data);
+  }
+}
+```
 
