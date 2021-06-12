@@ -99,7 +99,35 @@ public MemberVO(){
 
 
 
+### addMember
+```java
+public void addmember(MemberVO membervo){
 
+try{
+  con = dataFactry.getConnection();
+  String id = memberVO.getId();
+  String pwd = memberVO.getPwd();
+  String name = memberVO.getName();
+  String email = memberVO.getEmail();
+  
+  String query ="insert into i_member";
+  query+= (id,pwd,name,email)";
+  query += values(?,?,?,?,);
+  
+  pstmt=con.PreparedStatement(query);
+  
+  pstmt.setString(1,id);
+  pstmt.setString92,pwd);
+  pstmt.setString(3,name);
+  pstmt.setString(4,email);
+  pstmt.executeUpdate();
+  pstmt.close();
+  }catch(Exception e){
+    e.printStackTrace();
+  }
+ }
+}
+```
 
 
 
