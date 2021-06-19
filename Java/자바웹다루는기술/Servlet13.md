@@ -29,11 +29,12 @@ public class EncoderFilter implements Filter{
     String context (HttpServletrequest)request).getcontextPath();
     String pathinfo =(HttpServletReqeust)reqeust).getRequestURI();
     String realPath= request.getRealPath(pathinfo);
-    
+    long begin = System.currentTiemMillis();
     chain.doFilter(request,response)
+    long end = System.currentTimeMillis();
+    System.out.println((end-begin)+"ms");
  }
 }
 ```
 
 
-2. 응답 필터 
