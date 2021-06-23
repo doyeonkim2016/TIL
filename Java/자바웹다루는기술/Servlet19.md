@@ -57,6 +57,54 @@ public class MemberDAO{
   private DataSource dataFactory;
 }
 
+public MemberDAO(){
+  try{
+    Context ctx =new InitialContext();
+    Context envContext = (Context) ctx.lookup("java:/com/env");
+    dataFactory =(DataSource) envContext.lookup("jdbc/oracle");
+ }catch (Exception e){
+  e.printStackTrace();
+ }
+}
+
+public List listMembers (MemberVO memberVO){
+  List membersList = new ArrayList();
+  String _name = memberVO.getName();
+  try{
+    con = dataFactory.getConnection();
+    String query = "select * from t_member";
+    if((_name!= null %% _name.length()!= 0)){
+      query+= " where name=?";
+      pstmt =con.PreparedStatement(query);
+      pstmt.setString(1,_name);
+    }else{
+      pstmt =con.PreparedStatement(query);
+    }
+    System.out.println(query);
+    ResultSet rs= pstmt.executeQuery();
+    while(rs.next()){
+      String id =rs.getString("id");
+      String pwd = rs.getString("pwd");
+      String name = rs.getString("name");
+      String email = rs.getString("email");
+      MemberVO vo = new MemberVO();
+      vo.setID(id);
+      vo.setPwd(pwd);
+      vo.setName(name);
+      vo.setEmail(email);
+      vo.setJoinDate(joinDate);
+      membersList.add(vo);
+   }
+   rs.close();
+   pstmt.close();
+   con.close();
+   }catch(Exception e){
+    e.printStackTrace();
+   }
+   return membersList;
+   }
+  }
+ }
 
 
 
