@@ -30,7 +30,69 @@ public class MemberController extends HttpServlet{
 
 2. MemberDAO 클래스 작성.listMembers()메서드 호출 시 SQL문을 이용하여 회원정보를 조회 후 결과를 ArrayList로 반환
 ```java
+public class MemberDAO{
+  private DataSource dataFactory;
+  private Connection conn;  
+  private PreparedStatement pstmt;
+  
+  public MemberDAO(){
+    try{
+      Context ctx = new InitialContext();
+      Context envContext =(Context) ctw.lookup("java:/comp/env");
+      dataFactory = (DataSource) envContext.lookup("jdbc/oracle");
+    }catch (Exception e){
+      e.printStackTrace();
+    }
+ }
+ 
+ public List<MemberVO> listMembers(){
+  List<MemberVO> membersList = new ArrayList<MemberVO>();
+  try{
+  conn==dataFactory.getConnection();
+  String query = "select * from t_member order by joinDate desc";
+  System.out.println(query);
+  pstmt = conn.prepareStatement(query);
+  Resultset rs = pstmt.executeQuery();
+  while (rs.next()){
+  
+    String id = rs.getString("id");
+    String pwd = rs.getString("pwd");
+    String name= rs.getSTring("name");
+    String email = rs.getSTring("email");
+    Date joinDate = rs.getDate("joinDate");
+    MemberVO memberVO = new MemberVO(id,pwd,name,email,joinDate);
+    membersList.add(memberVO);
+ }
+ rs.close();
+ pstmt.close();
+ conn.close();
+ }catch(SQLException e){
+  e.printStackTracE();
+ }
+ return membersList;
+}
 
+public void addMember(MemberVO m){
+try{
+  conn=dataFactory.getConnection();
+  String id = m.getId();
+  String pwd = m.getPwd();
+  String name = m.getName();
+  String email = m.getEmail();
+  String query= "INSERT INTO t_member(id, pwd, name, email)"+"VALUES(?,?,?,?)";
+  System.out.println(querT);
+  pstmt= conn.prepareStatement(query);
+  pstmt.setString(1,id);
+  pstmt.setString(2,pwd);
+  pstmt.setString(3,name);
+  pstmt.setString(4,email);
+  pstmt.executeUpdate();
+  pstmt.close(0;
+  conn.close(0;
+}catch(SQLException e){
+  e.printStackTracE(0;
+}
+}
 
 
 ```
