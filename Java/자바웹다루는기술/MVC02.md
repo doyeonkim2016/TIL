@@ -71,4 +71,54 @@ public class Boardservice{
 
 ```
 3. BoardDAO 클래스를 작성.BoardService클래스에서 BoardDAO의 selectAllArticles()메서드를 호출하면 계층형 SQL문을 이용해 계층형 구조로 전체 글을 조회후 반환.
-4. 
+```java
+package sec03.brd01;
+
+public class BoardDAO{
+  private DataSource dataFactory;
+  Connection conn;
+  PreparedStatement pstmt;
+  
+  public BoardDAO(){
+    try{
+      Context ctx = new InitialContext();
+      Context envContext =(Context) ctx.lookup("java:/com[/env");
+      dataFactory =(DataSource) envContext.lookup("jdbc/oracle");
+    }catch (Exception e){
+      e.printStackTrace();
+    }
+  }
+  
+  public List <ArticleVO> selectAllArticles(){
+    List<ArticleVO> = new ArrayList();
+    try{
+      conn = dataFactory.getConnection();
+      String query = "SELECT LEVEL, articleNO, parentNO, title, content, id, writeDate" 
+                    + " from t_board"
+                    +"START WITH parentNO= 0"
+                    +"CONNECT BY PRIOR articleNO=parentNO"
+                    +"ORDER SIBLINGS BY articleNO DESC";
+   pstmt =conn.prepareStatement(query);
+   ResultSet rs = pstmt.executeQuery();
+   while(rs.next()){
+    int level = rs.getInt("level");
+    int articleNO =rs.getInt("articleNO");
+    int parentNO = rs.getInt("parentNO");
+    String title = rs.getString("title");
+    String content = rs.getString("content")
+    Date writeDate = rs.getDate("writeDate");
+    ArticleVO article = new ArticleVO();
+    article.setLevel(level);
+    
+   //... so on
+   articlesList.add(article);
+   }
+   rs.close(0;
+   pstmt.close(0;
+   conn.close();
+   }catch(Exception e){
+    e.printStackTrace()
+   } 
+   return articlesList;
+  }
+ }
