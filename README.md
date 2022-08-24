@@ -1,7 +1,11 @@
 
 # TIL
 
-Aspiring to be a Software Engineer
+Aim
+
+1. AWS SAA C03
+2. SQL
+3. Python
 
 ## MarkDown View
 [Algorithm](Algorithm/Readme.md)
